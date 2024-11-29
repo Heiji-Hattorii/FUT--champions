@@ -356,13 +356,11 @@
                 });
             }
         
-            // Ajoute un joueur à une position spécifique
             function ajouterJoueur(joueur) {
                 const position = joueur.position;
                 const element = [...joueurElements].find(el => el.dataset.position === position);
         
                 if (element) {
-                    // Mettre à jour les détails du joueur
                     const imgElement = element.querySelector("img");
                     const h5Element = element.querySelector("h5");
         
@@ -371,12 +369,10 @@
                 }
             }
         
-            // Sauvegarder les joueurs dans le localStorage
             function saveJoueurs() {
                 localStorage.setItem("joueurs", JSON.stringify(joueurs));
             }
         
-            // Gestion du formulaire d'ajout
             form.addEventListener("submit", (e) => {
                 e.preventDefault();
         
@@ -407,32 +403,24 @@
                     position
                 };
         
-                // Ajouter le joueur à la structure de stockage
                 joueurs[position] = joueur;
         
-                // Sauvegarder dans le localStorage
                 saveJoueurs();
         
-                // Mettre à jour la formation
                 updateFormation(formation);
         
-                // Ajouter le joueur
                 ajouterJoueur(joueur);
         
-                // Réinitialiser le formulaire sans recharger la page
                 form.reset();
             });
         
-            // Initialiser la formation par défaut
             formationSelect.addEventListener("change", (e) => {
                 const formation = e.target.value;
                 updateFormation(formation);
             });
         
-            // Charger la formation par défaut
             updateFormation(formationSelect.value);
         
-            // Afficher les joueurs stockés dans le localStorage au chargement de la page
             Object.values(joueurs).forEach(joueur => {
                 ajouterJoueur(joueur);
             });
