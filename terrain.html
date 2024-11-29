@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structure tactique</title>
+    <style>
+        body {
+            /* margin: 0;
+            padding: 0;
+            height: 100vh;
+            width:100%;
+            box-sizing: border-box; */
+            margin: 0;
+            padding: 0;
+            width:100%;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 100%;
+            gap: 2%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width:80%;
+            background-color: rgb(196, 208, 197);
+            padding: 20px;
+            border-radius: 10px;
+            justify-self: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        .fm {
+            padding: 5px;
+            display: grid;
+            grid-template-columns: 25% 75%;
+        }
+
+        button {
+            margin: 15px;
+        }
+
+        label {
+            justify-self: flex-end;
+            padding: 10px;
+        }
+
+        input {
+            border-radius: 10px;
+            border: 1px solid gray;
+        }
+
+        select {
+            border-radius: 10px;
+        }
+
+        fieldset {
+            border: 2px solid rgb(15, 121, 9);
+            border-radius: 10px;
+        }
+
+        .terrain {
+            position: relative;
+            width: 100%;
+        }
+
+        .terrain img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .joueur {
+            background-color: rgb(136, 220, 68);
+            width: 55px;
+            position: absolute;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid rgb(189, 215, 41);
+            border-radius: 45% 45% 0 0
+        }
+
+        .joueur:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .joueur img {
+            border-radius: 55%;
+        }
+
+        span {
+            position: absolute;
+            bottom: 15%;
+            right: 5%;
+            font-size: large;
+            font-weight: 600;
+            color: rgb(31, 58, 4);
+            background-color: rgb(231, 231, 7);
+            width: 25px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        h5 {
+            display: inline;
+        }
+
+        .gk {
+            bottom: 3%;
+            left: 44%;
+        }
+
+        .diff1 {
+            bottom: 15%;
+            left: 25%;
+        }
+
+        .diff2 {
+            bottom: 15%;
+            right: 25%;
+        }
+
+        .cb {
+            bottom: 28%;
+            left: 10%;
+        }
+
+        .lb {
+            bottom: 28%;
+            right: 10%;
+        }
+
+        .cm1 {
+            bottom: 33%;
+            left: 44%;
+        }
+
+        .cm2 {
+            bottom: 54%;
+            left: 33%;
+        }
+
+        .cm3 {
+            bottom: 54%;
+            right: 33%;
+        }
+
+        .lw {
+            bottom: 72%;
+            left: 18%;
+        }
+
+        .rw {
+            bottom: 72%;
+            right: 18%;
+        }
+
+        .st {
+            bottom: 85%;
+            left: 44%;
+        }
+
+        .coco {
+            display: flex;
+        }
+
+        @media (min-width: 700px) {
+            body {
+                grid-template-columns: 50% 50%;
+                flex-direction: row;
+                gap: 0;
+                background-image: url(img/Fond\ de\ terrain\ de\ football\ de\ style\ dégradé\ _\ Vecteur\ Gratuite.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .container {
+                align-self: center;
+                order: 2;
+            }
+
+            .terrain {
+                
+                align-self: center;
+                justify-self:center;
+                order: 1;
+                width: 65%;
+            }
+
+            .terrain img {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            }
+
+        }
+
+        @media (min-width: 100px) and (max-width:600px) {
+            .joueur {
+                width: 45px;
+            }
+
+            h5 {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <form>
+                <fieldset>
+                    <legend>Ajouter un joueur:</legend>
+                    <div class="fm">
+                        <label style="margin-top: 15px;">Nom :</label>
+                        <input id="nom" type="text" placeholder="Nom" style="margin-top: 15px;" required>
+                    </div>
+                    <div class="fm">
+                        <label>Prenom :</label>
+                        <input type="text" placeholder="Prenom" id="prenom" required>
+                    </div>
+
+                    <label>Photo :</label>
+                    <input type="file" id="photo" accept="image/*">
+
+
+                    <div class="fm">
+                        <label>Note :</label>
+                        <input type="number" placeholder="Note" id="note" required>
+                    </div>
+                    <div class="fm">
+                        <label>Âge :</label>
+                        <input type="number" placeholder="Âge" id="age" min="1" required>
+                    </div>
+                    <div class="fm">
+                        <label>Nationalité:</label>
+                        <input type="text" placeholder="Nationalité" id="nationalite" required>
+                    </div>
+                    <div class="fm">
+                        <label>Formation :</label>
+                        <select id="formation">
+                            <option value="4-3-3">4-3-3</option>
+                            <option value="4-4-2">4-4-2</option>
+                        </select>
+                    </div>
+
+                    <div class="fm">
+                        <label>Position :</label>
+                        <select id="position" name="position" required>
+                            <option value="GK">GK</option>
+                            <option value="CB">CB (Défenseurs centraux)</option>
+                            <option value="LB">LB (Latéral gauche)</option>
+                            <option value="RB"> RB (Latéral droit)</option>
+                            <option value="CM">CM (Milieux centraux)</option>
+                            <option value="LW"> LW (Ailier gauche)</option>
+                            <option value="RW">RW (Ailier droit)</option>
+                            <option value="ST">ST (Attaquant central)</option>
+                        </select>
+                    </div>
+                    <button id="ajouter">Ajouter</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="terrain">
+        <img src="img/e1f3f3da-4d68-4adf-af01-ba9c6c7e.jpg" class="photo" alt="">
+        <div class="coco">
+            <div class="gk joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="diff1 joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="diff2 joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="cb joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="lb joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="cm1 joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="cm2 joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="cm3 joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="lw joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="rw joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+            <div class="st joueur">
+                <img src="img/inconnu.jfif" alt="">
+                <h5>?</h5>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const positions = {
+                "4-3-3": ["GK", "CB", "CB", "LB", "RB", "CM", "CM", "CM", "LW", "RW", "ST"],
+                "4-4-2": ["GK", "CB", "CB", "LB", "RB", "CM", "CM", "LM", "RM", "ST", "ST"]
+            };
+        
+            const joueurElements = document.querySelectorAll(".joueur");
+            const form = document.querySelector("form");
+            const formationSelect = document.getElementById("formation");
+            const positionSelect = document.getElementById("position");
+            const nomInput = document.getElementById("nom");
+            const prenomInput = document.getElementById("prenom");
+            const photoInput = document.getElementById("photo");
+            const noteInput = document.getElementById("note");
+            const ageInput = document.getElementById("age");
+            const nationaliteInput = document.getElementById("nationalite");
+        
+
+            let joueurs = JSON.parse(localStorage.getItem("joueurs")) || {};
+        
+            // Met à jour l'affichage des positions selon la formation choisie
+            function updateFormation(formation) {
+                const positionsActuelles = positions[formation];
+        
+                joueurElements.forEach((joueur, index) => {
+                    const role = positionsActuelles[index] || "?";
+                    joueur.querySelector("h5").textContent = role;
+                    joueur.dataset.position = role;
+                });
+            }
+        
+            // Ajoute un joueur à une position spécifique
+            function ajouterJoueur(joueur) {
+                const position = joueur.position;
+                const element = [...joueurElements].find(el => el.dataset.position === position);
+        
+                if (element) {
+                    // Mettre à jour les détails du joueur
+                    const imgElement = element.querySelector("img");
+                    const h5Element = element.querySelector("h5");
+        
+                    imgElement.src = joueur.photo || "img/inconnu.jfif";
+                    h5Element.textContent = `${joueur.nom} ${joueur.prenom}`;
+                }
+            }
+        
+            // Sauvegarder les joueurs dans le localStorage
+            function saveJoueurs() {
+                localStorage.setItem("joueurs", JSON.stringify(joueurs));
+            }
+        
+            // Gestion du formulaire d'ajout
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+        
+                const nom = nomInput.value.trim();
+                const prenom = prenomInput.value.trim();
+                const photo = photoInput.files[0] ? URL.createObjectURL(photoInput.files[0]) : null;
+                const note = noteInput.value;
+                const age = ageInput.value;
+                const nationalite = nationaliteInput.value;
+                const formation = formationSelect.value;
+                const position = positionSelect.value;
+        
+                // Validation
+                if (!nom || !prenom || !position) {
+                    alert("Veuillez remplir tous les champs obligatoires !");
+                    return;
+                }
+        
+                // Créer un objet joueur
+                const joueur = {
+                    nom,
+                    prenom,
+                    photo,
+                    note,
+                    age,
+                    nationalite,
+                    formation,
+                    position
+                };
+        
+                // Ajouter le joueur à la structure de stockage
+                joueurs[position] = joueur;
+        
+                // Sauvegarder dans le localStorage
+                saveJoueurs();
+        
+                // Mettre à jour la formation
+                updateFormation(formation);
+        
+                // Ajouter le joueur
+                ajouterJoueur(joueur);
+        
+                // Réinitialiser le formulaire sans recharger la page
+                form.reset();
+            });
+        
+            // Initialiser la formation par défaut
+            formationSelect.addEventListener("change", (e) => {
+                const formation = e.target.value;
+                updateFormation(formation);
+            });
+        
+            // Charger la formation par défaut
+            updateFormation(formationSelect.value);
+        
+            // Afficher les joueurs stockés dans le localStorage au chargement de la page
+            Object.values(joueurs).forEach(joueur => {
+                ajouterJoueur(joueur);
+            });
+        });
+        </script>
+        
+</body>
+
+</html>
