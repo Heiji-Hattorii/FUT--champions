@@ -14,7 +14,7 @@
             box-sizing: border-box; */
             margin: 0;
             padding: 0;
-            width:100%;
+            width: 100%;
             height: 100vh;
             display: grid;
             grid-template-columns: 100%;
@@ -24,11 +24,12 @@
         }
 
         .container {
-            width:80%;
+            width: 80%;
             background-color: rgb(196, 208, 197);
             padding: 20px;
             border-radius: 10px;
             justify-self: center;
+            order: 1;
         }
 
         form {
@@ -67,6 +68,7 @@
         .terrain {
             position: relative;
             width: 100%;
+            order: 2
         }
 
         .terrain img {
@@ -75,15 +77,17 @@
             object-fit: cover;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
         }
-
         .joueur {
             background-color: rgb(136, 220, 68);
-            width: 55px;
+            max-width: 60px;
             position: absolute;
             box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s, box-shadow 0.3s;
             border: 3px solid rgb(189, 215, 41);
-            border-radius: 45% 45% 0 0
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+
         }
 
         .joueur:hover {
@@ -92,88 +96,110 @@
         }
 
         .joueur img {
-            border-radius: 55%;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
         }
 
-        span {
+        #spany {
             position: absolute;
-            bottom: 15%;
-            right: 5%;
-            font-size: large;
+            /* bottom: 60%;
+            right: 5%; */
+            bottom: 53%;
+            right: 2%;
+            font-size: small;
             font-weight: 600;
             color: rgb(31, 58, 4);
             background-color: rgb(231, 231, 7);
-            width: 25px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
             text-align: center;
             border-radius: 50%;
+            border: 2px solid rgb(31, 58, 4);
         }
 
         h5 {
-            display: inline;
+            display: block;
+            margin-top: 5px;
+            font-size: 16px;
+            color: #333;
         }
 
-        .gk {
-            bottom: 3%;
-            left: 44%;
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
         }
 
-        .diff1 {
-            bottom: 15%;
-            left: 25%;
+        .actions div {
+            display:inline;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        .diff2 {
-            bottom: 15%;
-            right: 25%;
+        .actions div:hover {
+            transform: scale(1.2);
         }
 
-        .cb {
-            bottom: 28%;
-            left: 10%;
-        }
-
-        .lb {
-            bottom: 28%;
-            right: 10%;
-        }
-
-        .cm1 {
-            bottom: 33%;
-            left: 44%;
-        }
-
-        .cm2 {
-            bottom: 54%;
-            left: 33%;
-        }
-
-        .cm3 {
-            bottom: 54%;
-            right: 33%;
-        }
-
-        .lw {
-            bottom: 72%;
-            left: 18%;
-        }
-
-        .rw {
-            bottom: 72%;
-            right: 18%;
-        }
-
-        .st {
-            bottom: 85%;
-            left: 44%;
+        .actions img {
+            width: 100%;
+            height: auto;
         }
 
         .coco {
             display: flex;
         }
 
+        .changement {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            height: 90%;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            order: 3;
+        }
+
+        .player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: darkolivegreen;
+            padding: 15px;
+            width: 90%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .player:hover {
+            transform: scale(1.05);
+        }
+
+        .player img {
+            margin-bottom: 5px;
+        }
+
+        .player span {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
         @media (min-width: 700px) {
             body {
-                grid-template-columns: 50% 50%;
+                grid-template-columns: 50% 15% 35%;
                 flex-direction: row;
                 gap: 0;
                 background-image: url(img/Fond\ de\ terrain\ de\ football\ de\ style\ dégradé\ _\ Vecteur\ Gratuite.jpg);
@@ -183,15 +209,15 @@
 
             .container {
                 align-self: center;
-                order: 2;
+                order: 3;
             }
 
             .terrain {
-                
+
                 align-self: center;
-                justify-self:center;
+                justify-self: center;
+                width: 73.4%;
                 order: 1;
-                width: 65%;
             }
 
             .terrain img {
@@ -201,6 +227,14 @@
                 object-fit: cover;
                 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
             }
+
+            .changement {
+                order: 2;
+            }
+            #spany {
+            position: absolute;
+            bottom: 60%;
+            right: 5%;}
 
         }
 
@@ -218,6 +252,57 @@
 
 <body>
 
+    <div class="terrain">
+        <img src="img/e1f3f3da-4d68-4adf-af01-ba9c6c7e.jpg" class="photo" alt="">
+        <div class="coco">
+            <div class="gk joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="cb1 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="cb2 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="rb joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="lb joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="cm1 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="cm2 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="qm1 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="qm2 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="qm3 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="lw joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="rw joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="st joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="st1 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+            <div class="st2 joueur">
+                <img src="img/inconnu.jfif" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="changement"></div>
     <div class="container">
         <div>
             <form>
@@ -232,17 +317,18 @@
                         <input type="text" placeholder="Prenom" id="prenom" required>
                     </div>
 
-                    <label>Photo :</label>
-                    <input type="file" id="photo" accept="image/*">
-
+                    <div class="fm">
+                        <label>Photo :</label>
+                        <input type="url" name="photo" id="photo" placeholder="https://example.com" required />
+                    </div>
 
                     <div class="fm">
-                        <label>Note :</label>
-                        <input type="number" placeholder="Note" id="note" required>
+                        <label>nombre :</label>
+                        <input type="number" placeholder="nombre" id="nombre" min="1" max="99" required>
                     </div>
                     <div class="fm">
                         <label>Âge :</label>
-                        <input type="number" placeholder="Âge" id="age" min="1" required>
+                        <input type="number" placeholder="Âge" id="age" min="1" max="50" required>
                     </div>
                     <div class="fm">
                         <label>Nationalité:</label>
@@ -251,182 +337,280 @@
                     <div class="fm">
                         <label>Formation :</label>
                         <select id="formation">
-                            <option value="4-3-3">4-3-3</option>
-                            <option value="4-4-2">4-4-2</option>
+                            <option value="433">4-3-3</option>
+                            <option value="442">4-4-2</option>
                         </select>
                     </div>
 
                     <div class="fm">
                         <label>Position :</label>
                         <select id="position" name="position" required>
-                            <option value="GK">GK</option>
-                            <option value="CB">CB (Défenseurs centraux)</option>
-                            <option value="LB">LB (Latéral gauche)</option>
-                            <option value="RB"> RB (Latéral droit)</option>
-                            <option value="CM">CM (Milieux centraux)</option>
-                            <option value="LW"> LW (Ailier gauche)</option>
-                            <option value="RW">RW (Ailier droit)</option>
-                            <option value="ST">ST (Attaquant central)</option>
+
                         </select>
                     </div>
-                    <button id="ajouter">Ajouter</button>
+                    <button id="ajouter" type="submit">Ajouter</button>
                 </fieldset>
             </form>
         </div>
     </div>
-    <div class="terrain">
-        <img src="img/e1f3f3da-4d68-4adf-af01-ba9c6c7e.jpg" class="photo" alt="">
-        <div class="coco">
-            <div class="gk joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="diff1 joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="diff2 joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="cb joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="lb joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="cm1 joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="cm2 joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="cm3 joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="lw joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="rw joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-            <div class="st joueur">
-                <img src="img/inconnu.jfif" alt="">
-                <h5>?</h5>
-            </div>
-        </div>
-    </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const positions = {
-                "4-3-3": ["GK", "CB", "CB", "LB", "RB", "CM", "CM", "CM", "LW", "RW", "ST"],
-                "4-4-2": ["GK", "CB", "CB", "LB", "RB", "CM", "CM", "LM", "RM", "ST", "ST"]
-            };
-        
-            const joueurElements = document.querySelectorAll(".joueur");
-            const form = document.querySelector("form");
-            const formationSelect = document.getElementById("formation");
-            const positionSelect = document.getElementById("position");
-            const nomInput = document.getElementById("nom");
-            const prenomInput = document.getElementById("prenom");
-            const photoInput = document.getElementById("photo");
-            const noteInput = document.getElementById("note");
-            const ageInput = document.getElementById("age");
-            const nationaliteInput = document.getElementById("nationalite");
-        
+            let nom = document.getElementById("nom");
+            let prenom = document.getElementById("prenom");
+            let photo = document.getElementById("photo");
+            let nombre = document.getElementById("nombre");
+            let age = document.getElementById("age");
+            let nationalite = document.getElementById("nationalite");
+            let formation = document.getElementById("formation");
+            let position = document.getElementById("position");
+            let btn = document.getElementById("ajouter");
+            let option = document.option;
 
-            let joueurs = JSON.parse(localStorage.getItem("joueurs")) || {};
-        
-            // Met à jour l'affichage des positions selon la formation choisie
-            function updateFormation(formation) {
-                const positionsActuelles = positions[formation];
-        
-                joueurElements.forEach((joueur, index) => {
-                    const role = positionsActuelles[index] || "?";
-                    joueur.querySelector("h5").textContent = role;
-                    joueur.dataset.position = role;
+
+            const tactique = {
+                "433": [
+                    { pos: "GK", bottom: "3%", left: "44%" },
+                    { pos: "CB1", bottom: "15%", left: "25%" },
+                    { pos: "CB2", bottom: "15%", right: "25%" },
+                    { pos: "LB", bottom: "28%", left: "10%" },
+                    { pos: "RB", bottom: "28%", right: "10%" },
+                    { pos: "QM1", bottom: "38%", left: "44%" },
+                    { pos: "QM2", bottom: "54%", left: "33%" },
+                    { pos: "QM3", bottom: "54%", right: "33%" },
+                    { pos: "LW", bottom: "72%", left: "18%" },
+                    { pos: "RW", bottom: "72%", right: "18%" },
+                    { pos: "ST", bottom: "85%", left: "44%" }
+                ],
+                "442": [
+                    { pos: "GK", bottom: "3%", left: "44%" },
+                    { pos: "CB1", bottom: "15%", left: "25%" },
+                    { pos: "CB2", bottom: "15%", right: "25%" },
+                    { pos: "LB", bottom: "28%", left: "10%" },
+                    { pos: "RB", bottom: "28%", right: "10%" },
+                    { pos: "CM1", bottom: "45%", left: "30%" },
+                    { pos: "CM2", bottom: "45%", right: "30%" },
+                    { pos: "LW", bottom: "60%", left: "20%" },
+                    { pos: "RW", bottom: "60%", right: "20%" },
+                    { pos: "ST1", bottom: "80%", left: "35%" },
+                    { pos: "ST2", bottom: "80%", right: "35%" }
+                ]
+            };
+
+            function updatePositions(selectedFormation) {
+                document.querySelectorAll(".joueur").forEach(joueur => {
+                    joueur.style.display = "none";
+                });
+
+                tactique[selectedFormation].forEach(player => {
+                    const playerElement = document.querySelector(`.${player.pos.toLowerCase()}`);
+                    if (playerElement) {
+                        playerElement.style.display = "block";
+                        playerElement.style.position = "absolute";
+                        playerElement.style.bottom = player.bottom;
+                        playerElement.style.left = player.left || "unset";
+                        playerElement.style.right = player.right || "unset";
+                    }
                 });
             }
-        
-            function ajouterJoueur(joueur) {
-                const position = joueur.position;
-                const element = [...joueurElements].find(el => el.dataset.position === position);
-        
-                if (element) {
-                    const imgElement = element.querySelector("img");
-                    const h5Element = element.querySelector("h5");
-        
-                    imgElement.src = joueur.photo || "img/inconnu.jfif";
-                    h5Element.textContent = `${joueur.nom} ${joueur.prenom}`;
-                }
+            function populatePositions(selectedFormation) {
+                position.innerHTML = "";
+                tactique[selectedFormation].forEach(player => {
+                    const opt = document.createElement("option");
+                    opt.value = player.pos;
+                    opt.textContent = player.pos;
+                    position.appendChild(opt);
+                });
             }
-        
-            function saveJoueurs() {
-                localStorage.setItem("joueurs", JSON.stringify(joueurs));
+
+            function modifierJoueur(joueur) {
+
+                nom.value = joueur.nom;
+                prenom.value = joueur.prenom;
+                photo.value = joueur.photo;
+                nombre.value = joueur.nombre;
+                age.value = joueur.age;
+                nationalite.value = joueur.nationalite;
+                formation.value = joueur.formation;
+                position.value = joueur.position;
+                btn.textContent = "Modifier";
+
             }
-        
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-        
-                const nom = nomInput.value.trim();
-                const prenom = prenomInput.value.trim();
-                const photo = photoInput.files[0] ? URL.createObjectURL(photoInput.files[0]) : null;
-                const note = noteInput.value;
-                const age = ageInput.value;
-                const nationalite = nationaliteInput.value;
-                const formation = formationSelect.value;
-                const position = positionSelect.value;
-        
-                // Validation
-                if (!nom || !prenom || !position) {
-                    alert("Veuillez remplir tous les champs obligatoires !");
-                    return;
+            function indice(joueur) {
+                let players = JSON.parse(localStorage.getItem("players")) || [];
+                let k;
+                for (let i = 0; i < players.length; i++) {
+                    if (players[i].nom === joueur.nom && players[i].prenom === joueur.prenom) {
+                        k = i;
+                        console.log(k);
+                        return k;
+                    }
                 }
-        
-                // Créer un objet joueur
-                const joueur = {
-                    nom,
-                    prenom,
-                    photo,
-                    note,
-                    age,
-                    nationalite,
-                    formation,
-                    position
-                };
-        
-                joueurs[position] = joueur;
-        
-                saveJoueurs();
-        
-                updateFormation(formation);
-        
-                ajouterJoueur(joueur);
-        
-                form.reset();
+                console.log("Aucun joueur correspondant trouvé.");
+                return -1;
+
+            }
+
+            function supprimerJoueur(joueur, position) {
+                let players = JSON.parse(localStorage.getItem("players")) || [];
+                players = players.filter(j => j.nom !== joueur.nom || j.prenom !== joueur.prenom);
+                localStorage.setItem("players", JSON.stringify(players));
+                let changements = JSON.parse(localStorage.getItem("changement")) || [];
+                changements.push(joueur);
+                localStorage.setItem("changement", JSON.stringify(changements));
+                window.location.reload();
+
+            }
+            function changement() {
+                const changes = JSON.parse(localStorage.getItem("changement")) || [];
+                let divchanger = document.querySelector(".changement");
+
+                changes.forEach(change => {
+                    let changi = document.createElement("div");
+                    changi.innerHTML = `
+                    <div class=player >
+                      <img src="${change.photo}" style="width:60px; border-radius: 50%; margin-bottom: 10px;">
+            <span style="font-weight: bold; font-size: 14px;">nombre: ${change.nombre}</span>
+            <h5 style="margin: 5px 0;">${change.nom} ${change.prenom}</h5>
+
+                    <p style="margin: 2px 0;">Âge: ${change.age}</p>
+            <p style="margin: 2px 0;">Nationalité: ${change.nationalite}</p>
+                    </div>
+                    `
+                    divchanger.appendChild(changi);
+                })
+            }
+
+            function auterrain() {
+                const players = JSON.parse(localStorage.getItem("players")) || [];
+                players.forEach(joueur => {
+                    const selectedFormation = joueur.formation;
+                    const selectedPosition = joueur.position.toLowerCase();
+                    const playerContainer = document.querySelector(`.${selectedPosition}`);
+
+                    if (playerContainer) {
+                        playerContainer.innerHTML = ` <img src="${joueur.photo}" alt="${joueur.nom} ${joueur.prenom}">
+        <span id="spany">${joueur.nombre}</span>
+        <h5>${joueur.nom} ${joueur.prenom}</h5>
+        <div class="actions">
+            <div class="modifier"><img src="img/icons8-ball-point-pen-50.png" alt="Modifier"></div>
+            <div class="supprimer"><img src="img/icons8-trash-can-50.png" alt="Supprimer"></div>
+        </div>`;
+                        const positionData = tactique[selectedFormation].find(p => p.pos.toLowerCase() === selectedPosition);
+                        if (positionData) {
+                            playerContainer.style.position = "absolute";
+                            playerContainer.style.bottom = positionData.bottom;
+                            playerContainer.style.left = positionData.left || "unset";
+                            playerContainer.style.right = positionData.right || "unset";
+                        }
+                        playerContainer.querySelector(".modifier").addEventListener("click", (e) => {
+                            let koko = indice(joueur);
+                            modifierJoueur(joueur);
+                            btn.addEventListener("click", (e) => {
+                                if (btn.textContent === "Modifier") {
+
+
+                                    let onepp = {
+                                        nom: nom.value,
+                                        prenom: prenom.value,
+                                        photo: photo.value,
+                                        nombre: nombre.value,
+                                        age: age.value,
+                                        nationalite: nationalite.value,
+                                        formation: formation.value,
+                                        position: position.value
+                                    };
+                                    players[koko] = onepp;
+
+                                    localStorage.setItem("players", JSON.stringify(players));
+
+                                }
+                            });
+                        });
+                        playerContainer.querySelector(".supprimer").addEventListener("click", () => {
+                            supprimerJoueur(joueur, selectedPosition);
+                        });
+                    }
+                });
+            }
+
+
+            populatePositions(formation.value);
+            updatePositions(formation.value);
+            auterrain();
+            changement();
+
+            formation.addEventListener("change", () => {
+                populatePositions(formation.value);
+                updatePositions(formation.value);
+
             });
-        
-            formationSelect.addEventListener("change", (e) => {
-                const formation = e.target.value;
-                updateFormation(formation);
-            });
-        
-            updateFormation(formationSelect.value);
-        
-            Object.values(joueurs).forEach(joueur => {
-                ajouterJoueur(joueur);
-            });
-        });
-        </script>
-        
+            btn.addEventListener("click", (e) => {
+                if (btn.textContent === "Ajouter") {
+                    let data = {
+                        nom: nom.value,
+                        prenom: prenom.value,
+                        photo: photo.value,
+                        nombre: nombre.value,
+                        age: age.value,
+                        nationalite: nationalite.value,
+                        formation: formation.value,
+                        position: position.value
+                    };
+                    if (!/^[a-zA-Z\s]+$/.test(data.nom)) {
+                        alert("Le nom doit contenir uniquement des lettres.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (!/^[a-zA-Z\s]+$/.test(data.prenom)) {
+                        alert("Le prénom doit contenir uniquement des lettres.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (isNaN(data.nombre) || data.nombre <= 0 || data.nombre >= 100) {
+                        alert("La nombre doit être comprise entre 1 et 99.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (isNaN(data.age) || data.age <= 0 || data.age > 50) {
+                        alert("L'âge doit être compris entre 1 et 50.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (!/^[a-zA-Z\s]+$/.test(data.nationalite)) {
+                        alert("La nationalité doit contenir uniquement des lettres.");
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (!/^https?:\/\/.+\..+/.test(data.photo)) {
+                        alert("Le lien de la photo doit être une URL valide.");
+                        e.preventDefault();
+                        return;
+                    }
+                    let players = JSON.parse(localStorage.getItem("players")) || [];
+                    let positionExiste = players.some(player => player.position === data.position);
+
+                    if (positionExiste) {
+                        let changements = JSON.parse(localStorage.getItem("changement")) || [];
+                        changements.push(data);
+                        localStorage.setItem("changement", JSON.stringify(changements));
+                        alert("Cette position est déjà remplie !");
+                    } else {
+                        players.push(data);
+                        localStorage.setItem("players", JSON.stringify(players));
+                        auterrain();
+                        changement();
+                    }
+                }
+            })
+
+        })
+    </script>
+
 </body>
 
 </html>
